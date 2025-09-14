@@ -9,9 +9,11 @@ app.use(cors());
 
 const server = http.createServer(app);
 
+const FE_URL = process.env.VITE_FE_URL || 'http://localhost:5173';
+
 const io = new Server(server, {
   cors: {
-    origin: ['http://localhost:5173', 'https://chat-app-production-c0bf.up.railway.app'],
+    origin: [FE_URL],
     methods: ['GET', 'POST'],
   },
 });
